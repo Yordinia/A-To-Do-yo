@@ -6,11 +6,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: {
-    index: './src/script.js', // Entry point for the application
+    index: './src/index.js', // Entry point for the application
   },
   // devtool: 'inline-source-map',
   devServer: {
-    static: './docs', // Serve static files from the 'docs' directory
+    static: './docs', // Serve static files from the 'dist' directory
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -19,7 +19,7 @@ module.exports = {
   ],
   output: {
     filename: '[name].bundle.js', // Use the entry point name for the bundle filename
-    path: path.resolve(__dirname, 'docs'), // Output to the 'docs' directory
+    path: path.resolve(__dirname, 'docs'), // Output to the 'distt' directory
     clean: true, // Clean the output directory before building
   },
   module: {
