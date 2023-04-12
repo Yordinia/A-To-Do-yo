@@ -31,14 +31,10 @@ h1 {
   cursor: default;
 }
 
-.pointer {
-  cursor: pointer;
-}
-
 .to-do-title {
   text-align: left;
   border-bottom: 1px solid #ddd;
-  padding: 0 1rem;
+  height: -2rem;
 }
 
 .grey-text {
@@ -49,7 +45,7 @@ h1 {
 
 #form {
   display: flex;
-  padding: 1rem;
+  padding: 0 1rem;
 }
 
 #new-item {
