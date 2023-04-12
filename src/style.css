@@ -1,7 +1,71 @@
-body {
-  background-color: bisque;
+*{
+  box-sizing: border-box;
+ /* outline: 2px solid rgb(243, 10, 10); */
 }
 
-p {
-  text-transform: uppercase;
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: rgb(235, 231, 224);
+  padding: 0 15rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.container, h1 {
+  background-color: #fff;
+  box-shadow: 0 0 1rem #f3fab5b2;
+  margin: 2rem;
+  width: 20rem;
+}
+
+h1 {
+  position: relative;
+  bottom: -4rem;
+}
+
+.no-pointer {
+  cursor: default;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.to-do-title {
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  padding: 0 1rem;
+}
+
+.grey-text {
+  color: #8c8c8c;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+#form {
+  display: flex;
+  padding: 1rem;
+}
+
+#new-item {
+  flex: 1;
+  border: none;
+  text-align: left;
+}
+
+#new-item::placeholder {
+  color: #8c8c8c;
+  font-style: italic;
+  font-size: 15px;
+  font-weight: 100;
+}
+
+footer {
+  margin-top: auto;
+  font-size: 0.5rem;
 }
