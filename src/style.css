@@ -37,9 +37,11 @@ h1.no-pointer {
 
 }
 .to-do-title {
+  display: flex;
+  justify-content: space-between;
   text-align: left;
   border-bottom: 1px solid #ddd;
-  height: -2rem;
+  padding: 0.4rem 0.4rem 0 0;
 }
 
 .grey-text {
