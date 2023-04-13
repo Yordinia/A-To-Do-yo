@@ -1,14 +1,14 @@
 import './style.css';
-const todo = document.querySelector('#new-item')
+const input = document.querySelector('#new-item')
+const form = document.querySelector('#form')
+
 
 const con = function (b){
-    console.log('running con')
-console.log(b)
+    form.preventDefault;
+    console.log('just ran con function')
+console.log(b.value)
 }
 
-const load = ()=>{
-   
-        todo.addEventListener('keyup',con(todo))
-    
-}
-window.onload(load)
+
+form.addEventListener('submit',con(input))    
+

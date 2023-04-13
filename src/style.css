@@ -6,7 +6,6 @@
 body {
   font-family: 'Roboto', sans-serif;
   background-color: rgb(235, 231, 224);
-  padding: 0 15rem;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,6 +24,11 @@ body {
 h1 {
   position: relative;
   bottom: -4rem;
+}
+
+i {
+  width: 2rem;
+  margin: 0.2rem;
 }
 
 .no-pointer {
@@ -53,13 +57,15 @@ h1.no-pointer {
 #form {
   display: flex;
   padding: 0 1rem;
+  justify-content: space-between;
+  
 }
 
 #new-item {
-  flex: 1;
   border: none;
   text-align: left;
   padding: 0.5rem;
+  flex: 1;
 }
 
 #new-item::placeholder {
@@ -69,6 +75,10 @@ h1.no-pointer {
   font-weight: 100;
 }
 
+#archive {
+  margin: 1rem;
+  padding: 0rem 30%;
+}
 
 ul {
   list-style: none;
@@ -86,5 +96,6 @@ li {
 
 footer {
   margin-top: auto;
-  font-size: 0.5rem;
+  font-size: 1rem;
+  width: fit-content;
 }
