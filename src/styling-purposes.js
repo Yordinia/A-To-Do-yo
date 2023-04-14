@@ -1,8 +1,7 @@
 const input = document.querySelector('#new-item')
 const form = document.querySelector('form')
 const classOns = ['mouseover','focus', 'keyup'];
-const classOffs = ['mouseout','blur' ];
-const cursorHide = ['click', 'keyup'];
+const classOffs = ['mouseout','blur'];
 
 var hover = false;
 
@@ -26,13 +25,9 @@ function hideCursor(e){
     hover = true;
 }
 
-document.addEventListener("DOMContentLoaded", function(){
-  
-    classOns.forEach(event =>
-        input.addEventListener(event, classOn))
-    classOffs.forEach( event => 
-        input.addEventListener(event, classOff))
-    cursorHide.forEach( event => 
-        input.addEventListener(event, hideCursor))
-    })
-
+classOns.forEach(event =>
+    input.addEventListener(event, classOn))
+classOffs.forEach( event => 
+    input.addEventListener(event, classOff))
+    
+input.addEventListener('keyup', hideCursor);
