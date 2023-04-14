@@ -18,7 +18,8 @@ body {
   background-color: #fff;
   box-shadow: 0 0 1rem #f3fab5b2;
   margin: 2rem;
-  width: 30rem;
+  width: 50vw;
+  min-width: 34rem;
 }
 
 h1 {
@@ -40,6 +41,14 @@ h1.no-pointer {
   padding: 1rem;
 
 }
+
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .to-do-title {
   display: flex;
   justify-content: space-between;
@@ -54,15 +63,17 @@ h1.no-pointer {
   font-size: 18px;
 }
 
-#form {
+form {
   display: flex;
-  padding: 0 1rem;
+  padding: 0 0.3rem;
   justify-content: space-between;
   
 }
 
 #new-item {
   border: none;
+  font-size: 1.5rem;
+  margin: 0.7rem;
   text-align: left;
   padding: 0.5rem;
   flex: 1;
@@ -71,8 +82,19 @@ h1.no-pointer {
 #new-item::placeholder {
   color: #8c8c8c;
   font-style: italic;
-  font-size: 15px;
+  font-size: 1rem;
   font-weight: 100;
+}
+
+#new-item:focus::placeholder {
+  color: transparent;
+  cursor: pointer;
+}
+
+.on-hover {
+  outline: 3px solid salmon;
+  font-style: italic;
+  font-weight: 200;
 }
 
 #archive {
@@ -80,19 +102,49 @@ h1.no-pointer {
   padding: 0rem 30%;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-li {
+#todo-list {
   display: flex;
-  gap: 2rem;
-  border-bottom: 1px solid #ddd;
-  padding: 10px;
+  flex-direction: column;
+  gap: 1rem;
 }
 
+.form-check {
+  margin-left: 0.5rem;
+  display: flex;
+  flex: 1;
+  gap: 1.5rem;
+  text-align: left;
+  max-width: 83%;
+}
+
+.form-check label {
+  flex: 1;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+i {
+  position: relative;
+  display: inline-block;
+}
+
+i .help {
+  visibility: hidden;
+  background-color: rgb(255, 243, 226);
+  color: #11020e;
+  text-align: center;
+  border-radius: 6px;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -2rem;
+  left: 115%;
+}
+
+i:hover .help {
+  visibility: visible;
+}
 
 footer {
   margin-top: auto;

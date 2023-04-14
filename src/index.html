@@ -17,11 +17,15 @@
     <div class="container">
       <div class="to-do-title">
         <p class="grey-text no-pointer">Today's To Do List</p>
-        <i class="bi bi-arrow-clockwise btn btn-outline-secondary navbar navbar-brand "></i>
+        <i class="bi bi-arrow-clockwise btn btn-light navbar navbar-brand ">
+          <span class="help">Refresh</span>
+        </i>
       </div>
-      <form id="form">
-        <input type="text" id="new-item" placeholder="Add to your list..." />
-        <i class="bi bi-arrow-90deg-left btn btn-outline-secondary navbar navbar-brand"></i>
+      <form>
+        <input type="text" id="new-item" placeholder="Your notes go here..." />
+        <i class="bi bi-arrow-90deg-left btn btn-light navbar navbar-brand">
+          <span class="help">ENTER</span>
+        </i>
       </form>
       <ul id="todo-list"></ul>
       <p id="archive" class=' btn btn-outline-secondary disabled navbar navbar-brand'>Clear all completed</p>
