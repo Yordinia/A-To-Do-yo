@@ -1,6 +1,8 @@
 import './style.css';
 import './styling-purposes.js'
 
+import {falseInput, listEmpty} from './code-reuse.js'
+
 const input = document.querySelector('#new-item');
 const form = document.querySelector('form');
 const listView = document.querySelector('#todo-list');
@@ -23,23 +25,29 @@ class Mytodo {
   }
 
   addTodo(e) {
-    
-    // console.log('hello', input, input.value, input.value.trim())
+    // console.log('input -', input, input.value, input.value.trim())
     e.preventDefault();
-    const obj = new List(input.value.trim());
+    let inputNote = input.value.trim();
+    if(inputNote==false) return falseInput();
+    const obj = new List(inputNote);
     myTodo.list.push(obj);
     form.reset();
-    console.log(myTodo.list[myTodo.list.length-1])
+    console.log('Last added object', myTodo.list[myTodo.list.length-1])
     myTodo.render();
   }
 
   render() {
     myTodo.toLocal();
     listView.innerHTML = '';
+
+    // If there's no value in the list
+    if(myTodo.list.length === 0) listEmpty();
+
      // Render new todo list based on updated tasks array
     myTodo.list.forEach((noteObj,index) => {
     const li = document.createElement('li');
     li.classList.add('navbar','navbar-brand')
+    li.setAttribute('data-index',index);
     li.innerHTML = `
     <div class="form-check">
     <input class="form-check-input" type="checkbox" id="${index}" ${
@@ -76,18 +84,9 @@ myTodo.setEventListener( clear, myTodo.clearCompleted)
   }
   
   removeTodo(e) {
-    const trash = e.target;
-    let listIndex = -1;
-    const findIndex = function() {
-      document.querySelectorAll('i.bi.bi-trash2').forEach((m, index) =>{
-        if(m===trash){
-          listIndex = index;          
-        }
-        if(listIndex!== -1) return;
-      })
-    }
-    findIndex();
-    myTodo.list.splice(listIndex,1)
+    const li = e.target.closest('li');
+    const listIndex = li.dataSet.index;
+    myTodo.list.splice(listIndex,1);
     myTodo.render();
   }
 

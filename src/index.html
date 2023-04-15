@@ -18,11 +18,14 @@
       <div class="to-do-title">
         <p class="grey-text no-pointer">Today's To Do List</p>
         <i class="bi bi-arrow-clockwise btn btn-light navbar navbar-brand ">
-          <span class="help">Refresh</span>
+          <p class="help">Refresh</p>
         </i>
       </div>
       <form>
-        <input type="text" id="new-item" placeholder="Your notes go here..." />
+        <div class="false-input-container">
+        <span id="false-input" class="help setVisibilityHidden"> Can't submit empty notes</span> 
+        <input type="text" id="new-item" placeholder="Your notes go here..."/> 
+        </div>
         <i class="bi bi-arrow-90deg-left btn btn-light navbar navbar-brand">
           <span class="help">ENTER</span>
         </i>
