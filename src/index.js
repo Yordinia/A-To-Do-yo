@@ -13,7 +13,7 @@ class Mytodo {
   }
 
   toLocal() {
-    localStorage.setItem('list', JSON.stringify(x.list));
+    localStorage.setItem('list', JSON.stringify(myTodo.list));
   }
 
   setEventListener( list, theFunction) {
@@ -27,17 +27,17 @@ class Mytodo {
     // console.log('hello', input, input.value, input.value.trim())
     e.preventDefault();
     const obj = new List(input.value.trim());
-    x.list.push(obj);
+    myTodo.list.push(obj);
     form.reset();
-    console.log(x.list[x.list.length-1])
-    x.render();
+    console.log(myTodo.list[myTodo.list.length-1])
+    myTodo.render();
   }
 
   render() {
-    x.toLocal();
+    myTodo.toLocal();
     listView.innerHTML = '';
      // Render new todo list based on updated tasks array
-    x.list.forEach((noteObj,index) => {
+    myTodo.list.forEach((noteObj,index) => {
     const li = document.createElement('li');
     li.classList.add('navbar','navbar-brand')
     li.innerHTML = `
@@ -66,13 +66,13 @@ class Mytodo {
 
 // set event listener on elements after creating them
 
-  x.setEventListener( trashList, x.removeTodo)
-  x.setEventListener( editList, x.editDescription)
-  x.setEventListener( enter, x.addTodo)
-  x.setEventListener( refresh, x.refreshPage)
-  x.setEventListener( clear, x.clearCompleted)
+myTodo.setEventListener( trashList, myTodo.removeTodo)
+myTodo.setEventListener( editList, myTodo.editDescription)
+myTodo.setEventListener( enter, myTodo.addTodo)
+myTodo.setEventListener( refresh, myTodo.refreshPage)
+myTodo.setEventListener( clear, myTodo.clearCompleted)
 
-  form.addEventListener('submit', x.addTodo);
+  form.addEventListener('submit', myTodo.addTodo);
   }
   
   removeTodo(e) {
@@ -87,8 +87,8 @@ class Mytodo {
       })
     }
     findIndex();
-    x.list.splice(listIndex,1)
-    x.render();
+    myTodo.list.splice(listIndex,1)
+    myTodo.render();
   }
 
   editDescription(e){
@@ -107,15 +107,15 @@ class Mytodo {
 
 class List {
   constructor(description) {
-    this.id = x.list.length;
+    this.id = myTodo.list.length + 1;
     this.description = description;
     this.completed = false;
   }
 }
 
-const x = new Mytodo();
+const myTodo = new Mytodo();
 
 window.onload = function(){
-console.log(x.list)
-x.render();
+console.log(myTodo.list)
+myTodo.render();
 }
