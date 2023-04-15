@@ -55,6 +55,7 @@ class Mytodo {
       } data-index="${index}">
     <label class="form-check-label" for="${index}">
      ${noteObj.description}
+     <input class="form-check-label setVisibilityHidden" id="edit-input"/>
     </label>
     </div>
     <div>
@@ -90,17 +91,30 @@ myTodo.setEventListener( clear, myTodo.clearCompleted)
     myTodo.render();
   }
 
-  editDescription(e){
-    console.log(e.type, 'ed edit right now ', e.target);
-
-  }
-
   refreshPage(e){
-    console.log(e.type, 'ed refresh right now ', e.target);
+    location.reload();
+    //console.log(e.type, 'ed refresh right now ', e.target);
   }
+
+  editDescription(e){
+    //console.log(e.type, 'ed edit right now ', e.target);
+    const li = e.target.closest('li');
+  
+  const startEdit = function() {
+
+  }
+
+    const newDescription = li.find; 
+    console.log(li,index)
+    //myTodo.list = [];
+
+  }
+
+  
 
   clearCompleted(e){
-    console.log(e.type, 'ed clear right now ', e.target);
+    //console.log(e.type, 'ed clear right now ', e.target);
+    window.loead
   }
 }
 
