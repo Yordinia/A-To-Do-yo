@@ -128,7 +128,7 @@ To run tests for the To Do List App, follow these steps:
 
 ### Deployment
 
-You can deploy this project using any web hosting service of your choice.
+# https://github.com/yordinia/A-To-Do-yo
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
