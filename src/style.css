@@ -131,8 +131,9 @@ form {
   max-width: 100%;
 }
 
-.when-edit {
-  background-color: #f3fab5b2;
+#edit-input {
+  display: none;
+  width: 85%;
 }
 
 .help {

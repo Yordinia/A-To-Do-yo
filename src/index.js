@@ -55,8 +55,8 @@ class Mytodo {
       } data-index="${index}">
     <label class="form-check-label" for="${index}">
      ${noteObj.description}
-     <input class="form-check-label setVisibilityHidden" id="edit-input"/>
     </label>
+    <input class="form-check-label" id="edit-input"/>
     </div>
     <div>
       <i class="bi bi-pencil"><span class="help">edit</span></i>
@@ -97,15 +97,19 @@ myTodo.setEventListener( clear, myTodo.clearCompleted)
   }
 
   editDescription(e){
-    //console.log(e.type, 'ed edit right now ', e.target);
+    // activate edit
+
     const li = e.target.closest('li');
-  
-  const startEdit = function() {
+    const editLable = li.querySelector('.form-check-label')
+    const editInput = li.querySelector('#edit-input')
 
-  }
-
-    const newDescription = li.find; 
-    console.log(li,index)
+    editable.setAttribute('contentEditable', true);
+    editLable.style.display = 'none'
+    editable.style.display = 'inline-block'
+    editable
+    console.log(editable, editLable)
+    //const newDescription;
+   // console.log(li,index)
     //myTodo.list = [];
 
   }
@@ -120,7 +124,7 @@ myTodo.setEventListener( clear, myTodo.clearCompleted)
 
 class List {
   constructor(description) {
-    this.id = myTodo.list.length + 1;
+    this.id = myTodo.list.length;
     this.description = description;
     this.completed = false;
   }
