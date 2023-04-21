@@ -28,8 +28,9 @@ class MyTodo {
     myTodo.render();
   }
   
-  removeTodo(e) {
-    const z =  e.target.closest('li');
+  removeTodo(li) {
+   
+    const z = ( this.checked === undefined)? this.closest('li') : li;
     const {index} = z.dataset;
     myTodo.list.splice(index,1);
     updateId(myTodo.list);
@@ -42,8 +43,9 @@ class MyTodo {
   editDescription(){
     // activate edit
     const li = this.closest('li');
-    const pastDescription = li.querySelector('label');
-    const inputElem = li.querySelector('#edit-input');
+    const {index} = li.dataset;
+    const pastDescription = li.firstElementChild.children[1];
+    const inputElem = li.firstElementChild.lastElementChild;
 
     inputElem.value = pastDescription.innerText;
     
@@ -51,30 +53,26 @@ class MyTodo {
     inputElem.classList.remove('dispaly-none');
     inputElem.focus();
 
-    const update_description = ()=> {
-      myTodo.list.description = inputElem.value;
-      toLocal(myTodo);
-      console.log('this is update_description -', myTodo.list, inputElem, inputElem.value)
+    const update_description = ()=> { 
+      const new_note = inputElem.value.trim();
+      if(new_note === '') {
+        myTodo.removeTodo(li);
+      }
+      else {
+        myTodo.list[index].description =  new_note;
+        pastDescription.innerText = new_note;
+        toLocal(myTodo);
+        pastDescription.classList.remove('dispaly-none');
+        inputElem.classList.add('dispaly-none');
+        inputElem.style.border = 'none';    
+      }
      }
 
-    //  const updatedescription = ()=> {
-    //   task.description = inputElem.value;
-    //   descriptionElem.innerText = inputElem.value;
-    //   toLocal();
-    //   console.log('this is blur input',task.description,this, this.type, this.value)
-
-    //  }
-    inputElem.addEventListener('keyup', () => {
-        console.log('key up input -',this.keyup)
-       // if()
+    inputElem.addEventListener('keyup', (e) => {
+        if(e.key === 'Enter') inputElem.blur();
     });
 
     inputElem.addEventListener('blur', update_description);
-
-    // descriptionElem.innerText = '';
-    // descriptionElem.appendChild(inputElem);
-    // inputElem.focus();
-
   }
 
   clearCompleted(){
@@ -133,7 +131,7 @@ class MyTodo {
     <label class="form-check-label" for="${index}">
      ${noteObj.description}
     </label>
-    <input class='form-check-label dispaly-none' id='edit-input'>
+    <input class='form-check-label on-hover dispaly-none' id='edit-input'>
     </div>
     <div class='icons'>
       <i class="bi bi-pencil"><span class="help">edit</span></i>
@@ -176,6 +174,5 @@ class List {
 const myTodo = new MyTodo();
 
 addEventListener("DOMContentLoaded", () => {
-  console.log(myTodo.list)
   myTodo.render();
 });
