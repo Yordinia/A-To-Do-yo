@@ -39,32 +39,38 @@ class MyTodo {
     myTodo.render();
   }
 
-  editDescription(e){
+  editDescription(){
     // activate edit
+    const li = this.closest('li');
+    const pastDescription = li.querySelector('label');
+    const inputElem = li.querySelector('#edit-input');
 
-    const descriptionElem = listItem.querySelector('.task-item__description');
-    const inputElem = document.createElement('input');
-    inputElem.type = 'text';
-    inputElem.value = descriptionElem.innerText;
+    inputElem.value = pastDescription.innerText;
+    
+    pastDescription.classList.add('dispaly-none');
+    inputElem.classList.remove('dispaly-none');
+
+    descriptionElem.focus();
+
     inputElem.addEventListener('blur', () => {
       task.description = inputElem.value;
       descriptionElem.innerText = inputElem.value;
       localStorage.setItem('tasks', JSON.stringify(tasks));
     });
-    descriptionElem.innerText = '';
-    descriptionElem.appendChild(inputElem);
-    inputElem.focus();
+
+    // descriptionElem.innerText = '';
+    // descriptionElem.appendChild(inputElem);
+    // inputElem.focus();
+
+    // const input = li.firstElementChild.lastElementChild;
+    // input.setAttribute('contenteditable',true)
+    // li.removeEventListener('click', myTodo.editDescription)
+    // input.focus()
+    // var range = input.createTextRange();
+    // input.collapse(false);
+    // input.select();
     
-    const li = e.target.closest('li');
-    const input = li.firstElementChild.lastElementChild;
-    input.setAttribute('contenteditable',true)
-    li.removeEventListener('click', myTodo.editDescription)
-    input.focus()
-    var range = input.createTextRange();
-    input.collapse(false);
-    input.select();
-    
-    console.log('this is edit ', li, input)
+    console.log('this is edit ', pastDescription, descriptionElem);
     //const newDescription;
    // console.log(li,index)
     //myTodo.list = [];
@@ -132,6 +138,7 @@ class MyTodo {
     <label class="form-check-label" for="${index}">
      ${noteObj.description}
     </label>
+    <input class='form-check-label dispaly-none' id='edit-input'>
     </div>
     <div class='icons'>
       <i class="bi bi-pencil"><span class="help">edit</span></i>

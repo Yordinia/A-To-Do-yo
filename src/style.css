@@ -149,9 +149,8 @@ form {
   display: flex;
 }
 
-#edit-input {
+.dispaly-none {
   display: none;
-  width: 85%;
 }
 
 .help {
