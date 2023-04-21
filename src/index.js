@@ -52,9 +52,8 @@ class Mytodo {
   }
 
   clearCompleted(e){
-    const filtered = myTodo.list.filter(({completed})=>!completed);
-
-    console.log('clear completed',myTodo.list, filtered);
+    myTodo.list =  myTodo.list.filter(({completed})=>!completed);
+    console.log('clear completed',myTodo, myTodo.list);
 //window.load
   }
 
