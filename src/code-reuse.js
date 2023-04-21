@@ -7,15 +7,15 @@ export function toLocal(the_list) {
 
 export function refreshPage(){
   location.reload();
-  console.log(e.type, 'ed refresh right now ', myTodo);
+  console.log('ed refresh right now ', myTodo);
 }
 
-export function updateId(my_list, startingIndex){
+export function updateId(my_list){
   my_list.forEach((object, index)=>{
-    if(index >= startingIndex) 
-    object.index = index;
+    console.log('updating index, object -', object, 'object.index - ',object['index'], 'index', index)
+    object.id = index;
   })
-  toLocal(my_list)
+  toLocal(my_list);
 }
 
 export function setEventListener( list, theFunction, event) {

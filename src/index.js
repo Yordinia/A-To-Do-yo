@@ -19,7 +19,7 @@ class Mytodo {
   addTodo(e) {
     e.preventDefault();
     let inputNote = input.value.trim();
-    if(inputNote==false) {
+    if(inputNote.length == false) {
       falseInput(myTodo); 
       return }
     const obj = new List(inputNote);
@@ -32,9 +32,10 @@ class Mytodo {
     const z =  e.target.closest('li');
     const {index} = z.dataset;
     myTodo.list.splice(index,1);
-    updateId(myTodo.list,index);
-    console.log(index, z, z.classList)
-    myTodo.checked -= 1;
+    updateId(myTodo.list);
+    if(z.classList.contains('checked')){
+       myTodo.checked -= 1;
+    }
     myTodo.render();
   }
 
@@ -113,9 +114,8 @@ class Mytodo {
     <label class="form-check-label" for="${index}">
      ${noteObj.description}
     </label>
-    <input class="form-check-label" id="edit-input"/>
     </div>
-    <div>
+    <div class='icons'>
       <i class="bi bi-pencil"><span class="help">edit</span></i>
       <i class="bi bi-trash2"><span class="help">delete</span></i>
     </div>
