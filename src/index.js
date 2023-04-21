@@ -49,35 +49,35 @@ class MyTodo {
     
     pastDescription.classList.add('dispaly-none');
     inputElem.classList.remove('dispaly-none');
+    inputElem.focus();
 
-    descriptionElem.focus();
+    const update_description = ()=> {
+      myTodo.list.description = inputElem.value;
+      toLocal(myTodo);
+      console.log('this is update_description -', myTodo.list, inputElem, inputElem.value)
+     }
 
-    inputElem.addEventListener('blur', () => {
-      task.description = inputElem.value;
-      descriptionElem.innerText = inputElem.value;
-      localStorage.setItem('tasks', JSON.stringify(tasks));
+    //  const updatedescription = ()=> {
+    //   task.description = inputElem.value;
+    //   descriptionElem.innerText = inputElem.value;
+    //   toLocal();
+    //   console.log('this is blur input',task.description,this, this.type, this.value)
+
+    //  }
+    inputElem.addEventListener('keyup', () => {
+        console.log('key up input -',this.keyup)
+       // if()
     });
+
+    inputElem.addEventListener('blur', update_description);
 
     // descriptionElem.innerText = '';
     // descriptionElem.appendChild(inputElem);
     // inputElem.focus();
 
-    // const input = li.firstElementChild.lastElementChild;
-    // input.setAttribute('contenteditable',true)
-    // li.removeEventListener('click', myTodo.editDescription)
-    // input.focus()
-    // var range = input.createTextRange();
-    // input.collapse(false);
-    // input.select();
-    
-    console.log('this is edit ', pastDescription, descriptionElem);
-    //const newDescription;
-   // console.log(li,index)
-    //myTodo.list = [];
-
   }
 
-  clearCompleted(e){
+  clearCompleted(){
     myTodo.list =  myTodo.list.filter(({completed})=>!completed);
     updateId(myTodo.list)
     myTodo.render();
@@ -95,9 +95,7 @@ class MyTodo {
       // Activate Clear Completed
       toggleClearCompleted(myTodo);
      }
-
      console.log('checkbox ON -', myTodo);
-
   }
   else {
     myTodo.list[this.dataset.index].completed = false;
@@ -107,9 +105,7 @@ class MyTodo {
       // Deactivate clear completed
       toggleClearCompleted(myTodo);
      }
-
      console.log('checkbox OFF -', myTodo);
-
   }
 
   toLocal(myTodo);
@@ -125,8 +121,7 @@ class MyTodo {
       listEmpty();
     }
      // Render new todo list based on updated tasks array
-    myTodo.list.forEach((noteObj,index) => 
-   {
+    myTodo.list.forEach((noteObj,index) => {
     const li = document.createElement('li');
     li.classList.add('navbar','navbar-brand');
     li.setAttribute('data-index',index);
