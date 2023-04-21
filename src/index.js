@@ -41,14 +41,29 @@ class MyTodo {
 
   editDescription(e){
     // activate edit
+
+    const descriptionElem = listItem.querySelector('.task-item__description');
+    const inputElem = document.createElement('input');
+    inputElem.type = 'text';
+    inputElem.value = descriptionElem.innerText;
+    inputElem.addEventListener('blur', () => {
+      task.description = inputElem.value;
+      descriptionElem.innerText = inputElem.value;
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    });
+    descriptionElem.innerText = '';
+    descriptionElem.appendChild(inputElem);
+    inputElem.focus();
+    
     const li = e.target.closest('li');
     const input = li.firstElementChild.lastElementChild;
     input.setAttribute('contenteditable',true)
     li.removeEventListener('click', myTodo.editDescription)
     input.focus()
-    const x = input.textContent;
-    input.textContent = ''
-    input.textContent = x;
+    var range = input.createTextRange();
+    input.collapse(false);
+    input.select();
+    
     console.log('this is edit ', li, input)
     //const newDescription;
    // console.log(li,index)
