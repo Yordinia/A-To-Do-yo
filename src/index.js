@@ -1,12 +1,4 @@
 import './style.css';
-
-window.onload = () => {
-
-
-  const myTodo = new MyTodo();
-  myTodo.render();
- 
-  
 import { toggleClearCompleted, toggleCheckedList } from './styling-purpose.js';
 
 import {
@@ -175,11 +167,11 @@ function List(description) {
   this.completed = false;
 }
 
+const myTodo = new MyTodo();
 
+window.onload = () => {
+  myTodo.render();
 };
-
-
-
 
 // addEventListener('DOMContentLoaded', () => {
 //   myTodo.render();
