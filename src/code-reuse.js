@@ -1,8 +1,8 @@
 const form = document.querySelector('form');
 const listView = document.querySelector('#todo-list');
 
-export function toLocal(the_list) {
-  localStorage.setItem('list', JSON.stringify(the_list.list));
+export function toLocal(todoObject) {
+  localStorage.setItem('list', JSON.stringify(todoObject.list));
 }
 
 export function refreshPage(){

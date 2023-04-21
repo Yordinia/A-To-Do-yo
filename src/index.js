@@ -9,7 +9,7 @@ const form = document.querySelector('form');
 const listView = document.querySelector('#todo-list');
 
 
-class Mytodo {
+class MyTodo {
 
   constructor() {
     this.list = JSON.parse(localStorage.getItem('list')) || [];
@@ -41,10 +41,15 @@ class Mytodo {
 
   editDescription(e){
     // activate edit
-
     const li = e.target.closest('li');
-    
-    console.log('this is edit ', li)
+    const input = li.firstElementChild.lastElementChild;
+    input.setAttribute('contenteditable',true)
+    li.removeEventListener('click', myTodo.editDescription)
+    input.focus()
+    const x = input.textContent;
+    input.textContent = ''
+    input.textContent = x;
+    console.log('this is edit ', li, input)
     //const newDescription;
    // console.log(li,index)
     //myTodo.list = [];
@@ -53,9 +58,8 @@ class Mytodo {
 
   clearCompleted(e){
     myTodo.list =  myTodo.list.filter(({completed})=>!completed);
-    toLocal(myTodo.list);
-    console.log('clear completed', myTodo.list);
-//window.load
+    updateId(myTodo.list)
+    myTodo.render();
   }
 
   checkBox(){
@@ -152,7 +156,7 @@ class List {
   }
 }
 
-const myTodo = new Mytodo();
+const myTodo = new MyTodo();
 
 addEventListener("DOMContentLoaded", () => {
   console.log(myTodo.list)

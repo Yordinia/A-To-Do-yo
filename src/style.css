@@ -142,6 +142,7 @@ form {
   flex: 1;
   overflow-x: auto;
   max-width: 100%;
+  transition: .3s all linear
 }
 
 .icons {
