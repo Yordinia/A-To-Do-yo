@@ -1,6 +1,7 @@
-*{
+* {
   box-sizing: border-box;
- /* outline: 2px solid rgb(243, 10, 10); */
+
+  /* outline: 2px solid rgb(243, 10, 10); */
 }
 
 body {
@@ -14,7 +15,8 @@ body {
   gap: 1rem;
 }
 
-.container, h1 {
+.container,
+h1 {
   background-color: #fff;
   box-shadow: 0 0 1rem #f3fab5b2;
   margin: 2rem;
@@ -41,7 +43,6 @@ i {
 h1.no-pointer {
   background-color: #f3fab5b2;
   padding: 1rem;
-
 }
 
 ul {
@@ -60,6 +61,7 @@ li {
 .checked {
   text-decoration: line-through;
   color: #888;
+
   /* pointer-events: none; */
   background-color: var(--bs-btn-disabled-bg);
   border-color: var(--bs-btn-disabled-border-color);
@@ -119,7 +121,7 @@ form {
 
 #archive {
   margin: 1rem;
-  padding: 0rem 30%;
+  padding: 0 30%;
 }
 
 #todo-list {
@@ -142,7 +144,7 @@ form {
   flex: 1;
   overflow-x: auto;
   max-width: 100%;
-  transition: .3s all linear
+  transition: 0.3s all linear;
 }
 
 .icons {
@@ -160,6 +162,7 @@ form {
   text-align: center;
   border-radius: 6px;
   display: block;
+
   /* Position the tooltip */
   position: absolute;
   z-index: 1;
