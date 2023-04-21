@@ -1,6 +1,12 @@
 const form = document.querySelector('form');
 const listView = document.querySelector('#todo-list');
 
+export function setEventListener( list, theFunction, event) {
+  for(let i=0; i<list.length; i++){ 
+      list[i].addEventListener(event, theFunction);
+  }
+}
+
 export function falseInput(a) {
     const falseInput = form.querySelector('#false-input')
     form.reset()
