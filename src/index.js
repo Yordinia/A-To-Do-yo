@@ -1,5 +1,5 @@
 import './style.css';
-import './styling-purposes.js'
+import './styling-purpose.js'
 
 import {falseInput, listEmpty} from './code-reuse.js'
 
@@ -18,76 +18,29 @@ class Mytodo {
     localStorage.setItem('list', JSON.stringify(myTodo.list));
   }
 
-  setEventListener( list, theFunction) {
-    for(let i=0; i<list.length; i++){
-      list[i].addEventListener('click', theFunction)
+  setEventListener( list, theFunction, event) {
+    for(let i=0; i<list.length; i++){ 
+        list[i].addEventListener(event, theFunction);
     }
   }
 
   addTodo(e) {
-    // console.log('input -', input, input.value, input.value.trim())
     e.preventDefault();
     let inputNote = input.value.trim();
-    if(inputNote==false) return falseInput();
+    if(inputNote==false) {
+      falseInput(myTodo); 
+      return }
     const obj = new List(inputNote);
     myTodo.list.push(obj);
     form.reset();
     console.log('Last added object', myTodo.list[myTodo.list.length-1])
     myTodo.render();
   }
-
-  render() {
-    myTodo.toLocal();
-    listView.innerHTML = '';
-
-    // If there's no value in the list
-    if(myTodo.list.length === 0) listEmpty();
-
-     // Render new todo list based on updated tasks array
-    myTodo.list.forEach((noteObj,index) => {
-    const li = document.createElement('li');
-    li.classList.add('navbar','navbar-brand')
-    li.setAttribute('data-index',index);
-    li.innerHTML = `
-    <div class="form-check">
-    <input class="form-check-input" type="checkbox" id="${index}" ${
-        noteObj.completed ? 'checked' : ''
-      } data-index="${index}">
-    <label class="form-check-label" for="${index}">
-     ${noteObj.description}
-    </label>
-    <input class="form-check-label" id="edit-input"/>
-    </div>
-    <div>
-      <i class="bi bi-pencil"><span class="help">edit</span></i>
-      <i class="bi bi-trash2"><span class="help">delete</span></i>
-    </div>
-    `;
-    li.classList.toggle('completed', noteObj.completed);
-    listView.appendChild(li);
-  });
-
-  const editList = document.querySelectorAll('i.bi.bi-pencil')
-  const trashList = document.querySelectorAll('i.bi.bi-trash2')
-  const enter = document.querySelectorAll('i.bi.bi-arrow-90deg-left')
-  const refresh = document.querySelectorAll('i.bi.bi-arrow-clockwise')
-  const clear = document.querySelectorAll('#archive')
-
-// set event listener on elements after creating them
-
-myTodo.setEventListener( trashList, myTodo.removeTodo)
-myTodo.setEventListener( editList, myTodo.editDescription)
-myTodo.setEventListener( enter, myTodo.addTodo)
-myTodo.setEventListener( refresh, myTodo.refreshPage)
-myTodo.setEventListener( clear, myTodo.clearCompleted)
-
-  form.addEventListener('submit', myTodo.addTodo);
-  }
   
   removeTodo(e) {
-    const li = e.target.closest('li');
-    const listIndex = li.dataSet.index;
-    myTodo.list.splice(listIndex,1);
+    const z =  e.target.closest('li');
+    const {index} = z.dataset;
+    myTodo.list.splice(index,1);
     myTodo.render();
   }
 
@@ -114,11 +67,62 @@ myTodo.setEventListener( clear, myTodo.clearCompleted)
 
   }
 
-  
-
   clearCompleted(e){
     //console.log(e.type, 'ed clear right now ', e.target);
     window.loead
+  }
+
+  render() {
+    myTodo.toLocal();
+    listView.innerHTML = '';
+
+    // If there's no value in the list
+    if(myTodo.list.length === 0) listEmpty();
+
+     // Render new todo list based on updated tasks array
+    myTodo.list.forEach((noteObj,index) => 
+   {
+    const li = document.createElement('li');
+    li.classList.add('navbar','navbar-brand')
+    li.setAttribute('data-index',index);
+    li.innerHTML = `
+    <div class="form-check">
+    <input class="form-check-input" type="checkbox" id="${index}" ${
+      noteObj.completed ? 'checked' : ''
+    }>
+    <label class="form-check-label" for="${index}">
+     ${noteObj.description}
+    </label>
+    <input class="form-check-label" id="edit-input"/>
+    </div>
+    <div>
+      <i class="bi bi-pencil"><span class="help">edit</span></i>
+      <i class="bi bi-trash2"><span class="help">delete</span></i>
+    </div>
+    `;
+    li.classList.toggle('completed', noteObj.completed);
+    listView.appendChild(li);
+   });
+
+   var checkbox = document.querySelectorAll("input[name=checkbox]");
+  const editList = document.querySelectorAll('i.bi.bi-pencil')
+  const trashList = document.querySelectorAll('i.bi.bi-trash2')
+  const enter = document.querySelectorAll('i.bi.bi-arrow-90deg-left')
+  const refresh = document.querySelectorAll('i.bi.bi-arrow-clockwise')
+  const clear = document.querySelectorAll('#archive')
+
+// set event listener on elements after creating them
+
+myTodo.setEventListener( trashList, myTodo.removeTodo, 'click')
+myTodo.setEventListener( trashList, myTodo.removeTodo, 'click')
+myTodo.setEventListener( editList, myTodo.editDescription, 'click')
+myTodo.setEventListener( enter, myTodo.addTodo, 'click')
+myTodo.setEventListener( refresh, myTodo.refreshPage, 'click')
+myTodo.setEventListener( clear, myTodo.clearCompleted, 'click')
+
+form.addEventListener('submit', myTodo.addTodo);
+console.log('remder finished -', myTodo.list)
+
   }
 }
 
@@ -126,7 +130,7 @@ class List {
   constructor(description) {
     this.id = myTodo.list.length;
     this.description = description;
-    this.completed = false;
+    this.completed = (Math.random() < 0.5);
   }
 }
 
