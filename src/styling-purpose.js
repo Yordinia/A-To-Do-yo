@@ -1,5 +1,6 @@
 const input = document.querySelector('#new-item')
-const form = document.querySelector('form')
+const clear = document.querySelector('#archive')
+
 const classOns = ['mouseover','focus', 'keyup'];
 const classOffs = ['mouseout','blur'];
 
@@ -31,3 +32,21 @@ classOffs.forEach( event =>
     input.addEventListener(event, classOff))
     
 input.addEventListener('keyup', hideCursor);
+
+
+export function toggleClearCompleted(the_list){
+    let complete = the_list.checked !== 0;
+    if(complete)
+      clear.classList.toggle('disabled', false);
+    else
+      clear.classList.toggle('disabled', true);
+
+    console.log('this is toggleClearCompleted - ', the_list, clear)
+}
+
+export function disableList(checkbox){
+    const li = checkbox.closest('li')
+    li.classList.toggle('completed', true)
+    console.log('disableList',li)
+    console.log(li)
+}

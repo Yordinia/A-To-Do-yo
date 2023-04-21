@@ -1,7 +1,8 @@
 import './style.css';
 import './styling-purpose.js'
 
-import {setEventListener, falseInput, listEmpty} from './code-reuse.js'
+import {setEventListener, toLocal, falseInput, listEmpty, refreshPage} from './code-reuse.js'
+import {toggleClearCompleted, disableList} from './styling-purpose.js'
 
 const input = document.querySelector('#new-item');
 const form = document.querySelector('form');
@@ -12,14 +13,8 @@ class Mytodo {
 
   constructor() {
     this.list = JSON.parse(localStorage.getItem('list')) || [];
-    this.checked = 0;
+    this.checked = this.list.filter(({completed})=> completed).length;
   }
-
-  toLocal() {
-    localStorage.setItem('list', JSON.stringify(myTodo.list));
-  }
-
- 
 
   addTodo(e) {
     e.preventDefault();
@@ -30,7 +25,6 @@ class Mytodo {
     const obj = new List(inputNote);
     myTodo.list.push(obj);
     form.reset();
-    console.log('Last added object', myTodo.list[myTodo.list.length-1])
     myTodo.render();
   }
   
@@ -38,26 +32,16 @@ class Mytodo {
     const z =  e.target.closest('li');
     const {index} = z.dataset;
     myTodo.list.splice(index,1);
+    myTodo.checked -= 1;
     myTodo.render();
-  }
-
-  refreshPage(e){
-    location.reload();
-    //console.log(e.type, 'ed refresh right now ', e.target);
   }
 
   editDescription(e){
     // activate edit
 
     const li = e.target.closest('li');
-    const editLable = li.querySelector('.form-check-label')
-    const editInput = li.querySelector('#edit-input')
-
-    editable.setAttribute('contentEditable', true);
-    editLable.style.display = 'none'
-    editable.style.display = 'inline-block'
-    editable
-    console.log(editable, editLable)
+    
+    console.log('this is edit ', li)
     //const newDescription;
    // console.log(li,index)
     //myTodo.list = [];
@@ -65,42 +49,50 @@ class Mytodo {
   }
 
   clearCompleted(e){
-    console.log(e.type, 'clear right now ', e.target);
+    
+    const filtered = myTodo.list.filter(({completed})=>!completed);
 
-    //window.load
+    console.log('clear completed',myTodo.list, filtered);
+//window.load
   }
 
   checkBox(){
   if(this.checked) {
-    if(myTodo.checked == 0) {
-      document.querySelector('#archive').classList.remove('disabled');
-      console.log('this is first checkbox ON- ',myTodo, document.querySelector('#archive'));
-     }
-    this.setAttribute('checked','')
+    this.parentElement.parentElement.setAttribute('checked','');
+    myTodo.list[this.dataset.index].completed = true;
     myTodo.checked += 1;
-    console.log('this is checkbox ON- ',myTodo);
+    
+   //this line is to watch the result in console , you can remove it later	
+    console.log("Refreshed, container -", container);
+    //disableList(this);//.lastElementChild.lastElementChild
+
+
+    if(myTodo.checked == 1) {
+      // Activate Clear Completed
+      toggleClearCompleted(myTodo);
+     }
   }
   else {
-    if(myTodo.checked == 1) {
-      document.querySelector('#archive').classList.add('disabled');
-      console.log('this is last checkbox OFF- ', myTodo, document.querySelector('#archive'));
-     }
     this.removeAttribute('checked');
+    myTodo.list[this.dataset.index].completed = false;
     myTodo.checked -= 1;    
-    console.log('this is checkbox OFF- ',myTodo);
+    if(myTodo.checked == 0) {
+      // Deactivate clear completed
+      toggleClearCompleted(myTodo);
+     }
   }
-
-  
-  
+  toLocal(myTodo);
   }
 
   render() {
-    myTodo.toLocal();
+    toLocal(myTodo);
     listView.innerHTML = '';
+    toggleClearCompleted(myTodo);
 
     // If there's no value in the list
-    if(myTodo.list.length === 0) listEmpty();
-
+    if(myTodo.list.length === 0) {
+      listEmpty();
+    }
      // Render new todo list based on updated tasks array
     myTodo.list.forEach((noteObj,index) => 
    {
@@ -141,11 +133,11 @@ setEventListener( checkbox, myTodo.checkBox, 'change')
 setEventListener( trashList, myTodo.removeTodo, 'click')
 setEventListener( editList, myTodo.editDescription, 'click')
 setEventListener( enter, myTodo.addTodo, 'click')
-setEventListener( refresh, myTodo.refreshPage, 'click')
+setEventListener( refresh, refreshPage, 'click')
 setEventListener( clear, myTodo.clearCompleted, 'click')
 
 form.addEventListener('submit', myTodo.addTodo);
-console.log('remder finished -', myTodo.list)
+console.log('render finished -', myTodo)
 
   }
 }
@@ -160,7 +152,7 @@ class List {
 
 const myTodo = new Mytodo();
 
-window.onload = function(){
-console.log(myTodo.list)
-myTodo.render();
-}
+addEventListener("DOMContentLoaded", () => {
+  console.log(myTodo.list)
+  myTodo.render();
+});

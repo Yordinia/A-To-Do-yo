@@ -57,6 +57,11 @@ li {
   background-color: white;
 }
 
+li.checked {
+  text-decoration: line-through;
+  color: #888;
+}
+
 .to-do-title {
   display: flex;
   justify-content: space-between;

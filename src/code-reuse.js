@@ -1,6 +1,15 @@
 const form = document.querySelector('form');
 const listView = document.querySelector('#todo-list');
 
+export function toLocal(the_list) {
+  localStorage.setItem('list', JSON.stringify(the_list.list));
+}
+
+export function refreshPage(e){
+  location.reload();
+  console.log(e.type, 'ed refresh right now ', myTodo);
+}
+
 export function setEventListener( list, theFunction, event) {
   for(let i=0; i<list.length; i++){ 
       list[i].addEventListener(event, theFunction);
