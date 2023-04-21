@@ -53,7 +53,7 @@ class Mytodo {
 
   clearCompleted(e){
     myTodo.list =  myTodo.list.filter(({completed})=>!completed);
-    toLocal();
+    toLocal(myTodo.list);
     console.log('clear completed', myTodo.list);
 //window.load
   }
