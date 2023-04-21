@@ -144,6 +144,10 @@ form {
   max-width: 100%;
 }
 
+.icons {
+  display: flex;
+}
+
 #edit-input {
   display: none;
   width: 85%;
