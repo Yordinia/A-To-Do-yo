@@ -33,7 +33,6 @@ classOffs.forEach( event =>
     
 input.addEventListener('keyup', hideCursor);
 
-
 export function toggleClearCompleted(the_list){
     let complete = the_list.checked !== 0;
     if(complete)
@@ -44,9 +43,14 @@ export function toggleClearCompleted(the_list){
     console.log('this is toggleClearCompleted - ', the_list, clear)
 }
 
-export function disableList(checkbox){
-    const li = checkbox.closest('li')
-    li.classList.toggle('completed', true)
-    console.log('disableList',li)
-    console.log(li)
+export function toggleCheckedList(li, flag){
+    let trash = li.lastElementChild.lastElementChild;
+    let edit = li.lastElementChild.firstElementChild;
+    
+    li.classList.toggle('checked', flag)
+    edit.classList.toggle('setVisibilityHidden', flag)
+    trash.classList.toggle('checked', false)
+
+    console.log('toggle checked list running',trash,edit,flag)
 }
+

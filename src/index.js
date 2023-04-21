@@ -1,8 +1,8 @@
 import './style.css';
 import './styling-purpose.js'
 
-import {setEventListener, toLocal, falseInput, listEmpty, refreshPage} from './code-reuse.js'
-import {toggleClearCompleted, disableList} from './styling-purpose.js'
+import {setEventListener, toLocal, falseInput, listEmpty, refreshPage, updateId} from './code-reuse.js'
+import {toggleClearCompleted, toggleCheckedList} from './styling-purpose.js'
 
 const input = document.querySelector('#new-item');
 const form = document.querySelector('form');
@@ -32,6 +32,8 @@ class Mytodo {
     const z =  e.target.closest('li');
     const {index} = z.dataset;
     myTodo.list.splice(index,1);
+    updateId(myTodo.list,index);
+    console.log(index, z, z.classList)
     myTodo.checked -= 1;
     myTodo.render();
   }
@@ -57,30 +59,34 @@ class Mytodo {
   }
 
   checkBox(){
+    const li = this.parentElement.parentElement;
+    toggleCheckedList(li, this.checked);
+
   if(this.checked) {
-    this.parentElement.parentElement.setAttribute('checked','');
     myTodo.list[this.dataset.index].completed = true;
     myTodo.checked += 1;
-    
-   //this line is to watch the result in console , you can remove it later	
-    console.log("Refreshed, container -", container);
-    //disableList(this);//.lastElementChild.lastElementChild
-
 
     if(myTodo.checked == 1) {
       // Activate Clear Completed
       toggleClearCompleted(myTodo);
      }
+
+     console.log('checkbox ON -', myTodo);
+
   }
   else {
-    this.removeAttribute('checked');
     myTodo.list[this.dataset.index].completed = false;
-    myTodo.checked -= 1;    
+    myTodo.checked -= 1; 
+       
     if(myTodo.checked == 0) {
       // Deactivate clear completed
       toggleClearCompleted(myTodo);
      }
+
+     console.log('checkbox OFF -', myTodo);
+
   }
+
   toLocal(myTodo);
   }
 
@@ -97,7 +103,7 @@ class Mytodo {
     myTodo.list.forEach((noteObj,index) => 
    {
     const li = document.createElement('li');
-    li.classList.add('navbar','navbar-brand')
+    li.classList.add('navbar','navbar-brand');
     li.setAttribute('data-index',index);
     li.innerHTML = `
     <div class="form-check">
@@ -114,11 +120,9 @@ class Mytodo {
       <i class="bi bi-trash2"><span class="help">delete</span></i>
     </div>
     `;
-    li.classList.toggle('completed', noteObj.completed);
     listView.appendChild(li);
+    toggleCheckedList(li, noteObj.completed);
    });
-
-  const checked = 0;
 
   const checkbox = document.querySelectorAll("input[type=checkbox]");
   const editList = document.querySelectorAll('i.bi.bi-pencil')
@@ -137,8 +141,7 @@ setEventListener( refresh, refreshPage, 'click')
 setEventListener( clear, myTodo.clearCompleted, 'click')
 
 form.addEventListener('submit', myTodo.addTodo);
-console.log('render finished -', myTodo)
-
+console.log('render finished -', myTodo);
   }
 }
 

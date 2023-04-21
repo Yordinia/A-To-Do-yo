@@ -57,9 +57,17 @@ li {
   background-color: white;
 }
 
-li.checked {
+.checked {
   text-decoration: line-through;
   color: #888;
+  /* pointer-events: none; */
+  background-color: var(--bs-btn-disabled-bg);
+  border-color: var(--bs-btn-disabled-border-color);
+  opacity: var(--bs-btn-disabled-opacity);
+}
+
+.not-checked {
+  all: unset;
 }
 
 .to-do-title {

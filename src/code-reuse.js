@@ -5,9 +5,17 @@ export function toLocal(the_list) {
   localStorage.setItem('list', JSON.stringify(the_list.list));
 }
 
-export function refreshPage(e){
+export function refreshPage(){
   location.reload();
   console.log(e.type, 'ed refresh right now ', myTodo);
+}
+
+export function updateId(my_list, startingIndex){
+  my_list.forEach((object, index)=>{
+    if(index >= startingIndex) 
+    object.index = index;
+  })
+  toLocal(my_list)
 }
 
 export function setEventListener( list, theFunction, event) {
