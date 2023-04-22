@@ -6,23 +6,23 @@ export function toLocal(todoObject) {
 }
 
 export function refreshPage() {
-  location.reload();
+  document.location.reload();
 }
 
-export function updateId(my_list) {
-  my_list.forEach((object, index) => {
+export function updateId(myList) {
+  myList.forEach((object, index) => {
     object.id = index;
   });
-  toLocal(my_list);
+  toLocal(myList);
 }
 
 export function setEventListener(list, theFunction, event) {
-  for (let i = 0; i < list.length; i++) {
+  for (let i = 0; i < list.length; i += 1) {
     list[i].addEventListener(event, theFunction);
   }
 }
 
-export function falseInput(a) {
+export function falseInput() {
   const falseInput = form.querySelector('#false-input');
   form.reset();
   falseInput.classList.replace('setVisibilityHidden', 'setVisibility');

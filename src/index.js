@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+
 import './style.css';
 import { toggleClearCompleted, toggleCheckedList } from './styling-purpose.js';
 
@@ -53,7 +55,7 @@ class MyTodo {
     inputElem.classList.remove('dispaly-none');
     inputElem.focus();
 
-    const update_description = () => {
+    const updateDescription = () => {
       const newNote = inputElem.value.trim();
       if (newNote === '') {
         myTodo.removeTodo(li);
@@ -71,12 +73,13 @@ class MyTodo {
       if (e.key === 'Enter') inputElem.blur();
     });
 
-    inputElem.addEventListener('blur', update_description);
+    inputElem.addEventListener('blur', updateDescription);
   }
 
   clearCompleted() {
     myTodo.list = myTodo.list.filter(({ completed }) => !completed);
     updateId(myTodo.list);
+    console.log(this);
     myTodo.render();
   }
 
@@ -88,7 +91,7 @@ class MyTodo {
       myTodo.list[this.dataset.index].completed = true;
       myTodo.checked += 1;
 
-      if (myTodo.checked == 1) {
+      if (myTodo.checked === 1) {
       // Activate Clear Completed
         toggleClearCompleted(myTodo);
       }
@@ -97,7 +100,7 @@ class MyTodo {
       myTodo.list[this.dataset.index].completed = false;
       myTodo.checked -= 1;
 
-      if (myTodo.checked == 0) {
+      if (myTodo.checked === 0) {
       // Deactivate clear completed
         toggleClearCompleted(myTodo);
       }
@@ -157,7 +160,7 @@ class MyTodo {
     setEventListener(clear, myTodo.clearCompleted, 'click');
 
     form.addEventListener('submit', myTodo.addTodo);
-    console.log('render finished -', myTodo);
+    console.log('Render finished', this);
   }
 }
 
