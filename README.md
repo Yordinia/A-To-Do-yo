@@ -4,10 +4,8 @@
 
 <div align="center">
   <img src="https://github.com/Yordinia/Webpack_Initiator/blob/main/Yordi.png" alt="logo" width="300px"  height="300px" />
-  <br/> <br/>
-   <br/>
   <h3><b>TO DO LIST APP</b></h3>
-[![Watch the video](https://www.loom.com/share/d21556a92f3e43bab82b81bfc60a6ef9)
+![Watch the video](https://www.loom.com/share/d21556a92f3e43bab82b81bfc60a6ef9)
 </div>
 
 
