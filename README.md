@@ -3,10 +3,10 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  
+
+ <img src='https://img.shields.io/badge/Microverse-blueviolet'>
+ <img src='https://github.com/Yordinia/A-To-Do-yo/blob/main/gif/simplicity.gif'>
   <h3><b>TO DO LIST APP</b></h3>
-  <div> ![loom screen recorder]('https://www.loom.com/share/d21556a92f3e43bab82b81bfc60a6ef9') </div><br/>
-  <img src="https://github.com/Yordinia/Webpack_Initiator/blob/main/Yordi.png" alt="logo" width="300px"  height="300px" />
 </div>
 
 
@@ -36,8 +36,8 @@
 # 📖 To Do List App <a name="about-project"></a>
 
 <div align="center">
-  ![](https://user-images.githubusercontent.com/75666332/229297258-24916b9d-2820-45eb-802a-050880b4ca1e.png)
   <br/>
+  <img src="https://github.com/Yordinia/Webpack_Initiator/blob/main/Yordi.png" alt="logo" width="300px"  height="300px" />
   <h3><b>To Do List App</b></h3>
 </div>
 
