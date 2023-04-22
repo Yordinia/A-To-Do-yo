@@ -82,7 +82,8 @@ class MyTodo {
     myTodo.list = myTodo.list.filter(({ completed }) => !completed);
     myTodo.checked -= completedLength;
     updateId(myTodo.list);
-    console.log(this);
+    //toggleClearCompleted(myTodo);
+    console.log('this is clear completed - list',myTodo.list,'just cleared ', completedLength,' notes!');
     myTodo.render();
   }
 
