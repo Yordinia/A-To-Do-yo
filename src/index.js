@@ -39,6 +39,7 @@ class MyTodo {
     if (z.classList.contains('checked')) {
       myTodo.checked -= 1;
     }
+    toggleClearCompleted(myTodo);
     myTodo.render();
   }
 
@@ -77,7 +78,9 @@ class MyTodo {
   }
 
   clearCompleted() {
+    const completedLength = myTodo.list.filter(({ completed }) => completed).length;
     myTodo.list = myTodo.list.filter(({ completed }) => !completed);
+    myTodo.checked -= completedLength;
     updateId(myTodo.list);
     console.log(this);
     myTodo.render();
@@ -95,7 +98,6 @@ class MyTodo {
       // Activate Clear Completed
         toggleClearCompleted(myTodo);
       }
-      console.log('checkbox ON -', myTodo);
     } else {
       myTodo.list[this.dataset.index].completed = false;
       myTodo.checked -= 1;
@@ -104,7 +106,6 @@ class MyTodo {
       // Deactivate clear completed
         toggleClearCompleted(myTodo);
       }
-      console.log('checkbox OFF -', myTodo);
     }
 
     toLocal(myTodo);
@@ -113,7 +114,6 @@ class MyTodo {
   render() {
     toLocal(myTodo);
     listView.innerHTML = '';
-    toggleClearCompleted(myTodo);
 
     // If there's no value in the list
     if (myTodo.list.length === 0) {
@@ -160,6 +160,7 @@ class MyTodo {
     setEventListener(clear, myTodo.clearCompleted, 'click');
 
     form.addEventListener('submit', myTodo.addTodo);
+    toggleClearCompleted(myTodo);
     console.log('Render finished', this);
   }
 }
@@ -171,7 +172,6 @@ const List = function(description) {
 }
 
 const myTodo = new MyTodo();
+  
 
-window.onload = () => {
-  myTodo.render();
-};
+window.addEventListener('DOMContentLoaded', () => myTodo.render())
