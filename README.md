@@ -1,10 +1,12 @@
 
 
 <a name="readme-top"></a>
+ <img src='https://img.shields.io/badge/Microverse-blueviolet'>
+ </br> 
+  #   📖 To Do List App <a name="about-project"></a>
 
 <div align="center">
- # 📖 To Do List App <a name="about-project"></a>
- <img src='https://img.shields.io/badge/Microverse-blueviolet'>
+ <b> <i> <u> PREVIEW </u> </i></b> </br> </br>
  <img src='https://github.com/Yordinia/A-To-Do-yo/blob/main/src/gif/simplicity.gif'>
 </div>
 
