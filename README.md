@@ -3,9 +3,8 @@
 <a name="readme-top"></a>
 
 <div align="center">
-
  <img src='https://img.shields.io/badge/Microverse-blueviolet'>
- <img src='https://github.com/Yordinia/A-To-Do-yo/blob/main/gif/simplicity.gif'>
+ <img src='https://github.com/Yordinia/A-To-Do-yo/blob/main/src/gif/simplicity.gif'>
   <h3><b>TO DO LIST APP</b></h3>
 </div>
 
@@ -37,7 +36,7 @@
 
 <div align="center">
   <br/>
-  <img src="https://github.com/Yordinia/Webpack_Initiator/blob/main/Yordi.png" alt="logo" width="300px"  height="300px" />
+  <img src="https://github.com/Yordinia/Webpack_Initiator/blob/main/Yordi.png" alt="logo" width="200px"  height="200px" />
   <h3><b>To Do List App</b></h3>
 </div>
 
