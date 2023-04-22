@@ -7,7 +7,7 @@
   <br/> <br/>
    <br/>
   <h3><b>TO DO LIST APP</b></h3>
-  <video src='https://www.loom.com/share/d21556a92f3e43bab82b81bfc60a6ef9'>
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/vt5fpE0bzSY)
 </div>
 
 
