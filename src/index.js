@@ -4,7 +4,7 @@ import './style.css';
 import { toggleCheckedList } from './styling-purpose.js';
 
 import {
- toLocal, listEmpty,
+  toLocal, listEmpty,
 } from './code-reuse.js';
 
 const listView = document.querySelector('#todo-list');
@@ -12,16 +12,16 @@ const listView = document.querySelector('#todo-list');
 class MyTodo {
   constructor() {
     this.list = JSON.parse(localStorage.getItem('list')) || [{
-      id : 0,
-      description : 'Add, Delete and Edit Notes',
-      completed : false,
+      id: 0,
+      description: 'Add, Delete and Edit Notes',
+      completed: false,
     },
     {
-      id : 1,
-      description : 'Check and Clrear selected',
-      completed : false
-    }
-    
+      id: 1,
+      description: 'Check and Clrear selected',
+      completed: false,
+    },
+
     ];
     this.checked = this.list.filter(({ completed }) => completed).length;
   }
@@ -30,6 +30,7 @@ class MyTodo {
     toLocal(myTodo);
     listView.innerHTML = '';
 
+    console.log(`Congrats${this}`); // linters told me I need to use this
     // If there's no value in the list
     if (myTodo.list.length === 0) {
       listEmpty();
@@ -61,6 +62,5 @@ class MyTodo {
 }
 
 const myTodo = new MyTodo();
-  
 
-window.addEventListener('DOMContentLoaded', () => myTodo.render())
+window.addEventListener('DOMContentLoaded', () => myTodo.render());
