@@ -43,6 +43,40 @@ class MyTodo {
     myTodo.render();
   }
 
+  editDescription() {
+    // activate edit
+    const li = this.closest('li');
+    const { index } = li.dataset;
+    const pastDescription = li.firstElementChild.children[1];
+    const inputElem = li.firstElementChild.lastElementChild;
+
+    inputElem.value = pastDescription.innerText;
+
+    pastDescription.classList.add('dispaly-none');
+    inputElem.classList.remove('dispaly-none');
+    inputElem.focus();
+
+    const updateDescription = () => {
+      const newNote = inputElem.value.trim();
+      if (newNote === '') {
+        myTodo.removeTodo(li);
+      } else {
+        myTodo.list[index].description = newNote;
+        pastDescription.innerText = newNote;
+        toLocal(myTodo);
+        pastDescription.classList.remove('dispaly-none');
+        inputElem.classList.add('dispaly-none');
+        inputElem.style.border = 'none';
+      }
+    };
+
+    inputElem.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') inputElem.blur();
+    });
+
+    inputElem.addEventListener('blur', updateDescription);
+  }
+
   render() {
     toLocal(myTodo);
     listView.innerHTML = '';
@@ -97,13 +131,12 @@ class MyTodo {
   }
 }
 
-const List = function(description) {
+const List = function (description) {
   this.id = myTodo.list.length;
   this.description = description;
   this.completed = false;
-}
+};
 
 const myTodo = new MyTodo();
-  
 
-window.addEventListener('DOMContentLoaded', () => myTodo.render())
+window.addEventListener('DOMContentLoaded', () => myTodo.render());
