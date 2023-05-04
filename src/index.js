@@ -92,9 +92,9 @@ class MyTodo {
       li.setAttribute('data-index', index);
       li.innerHTML = `
     <div class="form-check">
-    <input class="form-check-input" type="checkbox" id="${index}" ${
-  noteObj.completed ? 'checked' : ''
-} data-index=${index}>
+    <input class="form-check-input" type="checkbox" id="${index}"
+     ${noteObj.completed ? 'checked' : '' } 
+     data-index=${index}>
     <label class="form-check-label" for="${index}">
      ${noteObj.description}
     </label>
