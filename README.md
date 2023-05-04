@@ -10,6 +10,9 @@
  <img src='https://github.com/Yordinia/A-To-Do-yo/blob/main/src/gif/simplicity.gif'>
 </div>
 
+![](https://img.shields.io/badge/Microverse-blueviolet)
+
+<!-- TABLE OF CONTENTS -->
 
 # 📗 Table of Contents
 
@@ -19,166 +22,127 @@
     - [Key Features](#key-features)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
-  - [Prerequisites](#prerequisites)
-  - [Install](#install)
-  - [Usage](#usage)
-  - [Run tests](#run-tests)
-  - [Deployment](#triangular_flag_on_post-deployment)
 - [👥 Authors](#authors)
-- [🔭 Future Features](#future-features)
+- [Future Features](#future-features)
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 - [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ (OPTIONAL)](#faq)
+- [❓ FAQ](#faq)
 - [📝 License](#license)
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 To Do List App <a name="about-project"></a>
+# 📖 Awesome Books <a name="about-project"></a>
 
-This is a simple to-do list web application that allows users to add, edit, and delete tasks. The app is built using HTML, CSS, JavaScript, and runs on WebApp. The project is still on progress.
+<p align="center">
+<b> Awesome Books </b>  is a website that allow users to create a book with title and author name and add to their books list on the page.
+<br>Used as much modules as possible!
+</p>
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
 
-- Client: HTML, CSS, JavaScript
-- Server: Not applicable
-- Database: Not applicable
+
 
 <details>
-  <summary>Client</summary>
+  <summary>Languages</summary>
   <ul>
-    <li><a href="https://www.w3.org/html/">HTML</a></li>
-    <li><a ref="https://www.w3.org/Style/CSS/">CSS</a></li>
-    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JS</a></li>
- 
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>Javascript</li>
   </ul>
 </details>
 
-The project was built using the following technologies:
+<details>
+  <summary>Server</summary>
+  <ul>
+    <li><a href="https://github.com/">Github</a></li>
+  </ul>
+</details>
 
-- HTML
-- CSS
-- JavaScript
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<!-- Features -->
 
 ### Key Features <a name="key-features"></a>
 
-- **Create a task with a title and description**
-- **Mark tasks as complete or incomplete**
-- **Delete tasks**
-- **Edit Tasks**
+- **Add Books to a book list**
+- **Delete Books from the book list**
+- **Save data to local storage**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
+<!-- GETTING STARTED -->
+
 ## 💻 Getting Started <a name="getting-started"></a>
 
-To get a local copy of the project up and running, follow these steps.
+To get a local copy up and running, follow these steps.
 
-### Prerequisites
 
-In order to run this project, you need to have a web browser installed on your computer.
 
 ### Setup
 
-Clone this repository to your desired folder by running the following command:
+Clone this repository to your desired folder:
+
+
 
 ```sh
-  clone git@github.com:yordinia/Yordi-To-Do-List.git
+  git clone https://github.com/yordinia/A-To-Do-yo.git
 ```
-
-### Install
-
-Run npm install to install all dependencies
-
-```sh
-  cd To-Do-List
-  npm install
-
-```
-
-### Usage
-
-Run npm start to start the application using webapp live server.
-
-```sh
-  npm start
-
-```
-
-This will open the app in your browser at http://localhost:8081/
-
-### Run tests
-
-To run tests for the To Do List App, follow these steps:
-
-- Open the command prompt or terminal on your computer.
-- Navigate to the project directory using the cd command.
-- Type the command npm run test and press enter.
-
-```sh
- npm run test
-```
-
-### Deployment
-
-# https://github.com/yordinia/A-To-Do-yo
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- AUTHORS -->
 
-## 👥 Author <a name="authors"></a>
-
-This project was developed by:
-
-👤 ** Yordanos Temesgen ** - Developer
-
+## 👥 Authors 
+<a name="authors"></a>
+ 
+👤 **Yordanos Temesgen**
+ 
+__Yordanos Temesgen__
 - GitHub: [@yordinia](https://github.com/yordinia)
 - Twitter: [@yordinia](https://twitter.com/yordinia)
-- LinkedIn: [@yordinia](https:// -- handel)
+- LinkedIn: [Yordanos-Temesgen](https://linkedin.com/in/yordanos-temesgen-251b6a202)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-The work on this project is still in progress. Currently, users can add tasks to the list, mark tasks as complete, and delete tasks. However, some features are still under development, such as the ability to sort tasks by priority or due date.
+- [ ] **Java script only, to do a simple CRUD**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CONTRIBUTING -->
 
 ## 🤝 Contributing <a name="contributing"></a>
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/Yordinia/A-To-Do-yo/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- SUPPORT -->
 
 ## ⭐️ Show your support <a name="support"></a>
 
-If you like this project, please give it a star on GitHub.
+If you like this project give me a star.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGEMENTS -->
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to thank the following resources and individuals for their help and inspiration:
+ We would like to thank all our fellow micronauts.
 
-- <a href="https://www.microverse.org/">Microverse</a>, an online software engineering coding bootcamp.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## ❓ FAQ (OPTIONAL) <a name="faq"></a>
+- **What is this project?**
 
-- **Can I modify and redistribute this project?**
-
-  - Yes, you can modify and redistribute this project as long as you follow the terms of the MIT license.
-
-- **How can I contribute to this project?**
-
-  - Contributions, issues, and feature requests are welcome! You can check the issues page to see if there are any current issues or feature requests that you can work on. If not, feel free to submit a new issue or pull request. Before contributing, please read the CONTRIBUTING.md file for guidelines on how to contribute to this project.
+  - It's a  project of micoverse curriculum entitled To-Do-List.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -186,6 +150,7 @@ I would like to thank the following resources and individuals for their help and
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./LICENSE) licensed.
+This project is [MIT](https://github.com/Yordinia/yordinia/blob/main/LICENCE.md) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
