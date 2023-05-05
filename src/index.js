@@ -1,11 +1,14 @@
 /* eslint-disable no-use-before-define */
 
 import './style.css';
-import { toggleClearCompleted, toggleCheckedList } from './styling-purpose.js';
+import { toggleClearCompleted, toggleCheckedList, showDraggable} from '../modules/styling-purpose.js';
 
 import {
   setEventListener, toLocal, falseInput, listEmpty, refreshPage, updateId,
-} from './code-reuse.js';
+} from '../modules/code-reuse.js';
+
+import draggable from '../modules/draggable.js';
+
 
 const input = document.querySelector('#new-item');
 const form = document.querySelector('form');
@@ -138,6 +141,7 @@ class MyTodo {
     <div class='icons'>
       <i class="bi bi-pencil"><span class="help">edit</span></i>
       <i class="bi bi-trash2"><span class="help">delete</span></i>
+      <i class="bi bi-three-dots-vertical setVisibilityHidden"></i>
     </div>
     `;
       listView.appendChild(li);
@@ -150,6 +154,8 @@ class MyTodo {
     const enter = document.querySelectorAll('i.bi.bi-arrow-90deg-left');
     const refresh = document.querySelectorAll('i.bi.bi-arrow-clockwise');
     const clear = document.querySelectorAll('#archive');
+    const dragIcon =  document.querySelectorAll('.bi-three-dots-vertical')
+    const li =  document.querySelectorAll('li')
 
     // set event listener on elements after creating them
 
@@ -159,6 +165,8 @@ class MyTodo {
     setEventListener(enter, myTodo.addTodo, 'click');
     setEventListener(refresh, refreshPage, 'click');
     setEventListener(clear, myTodo.clearCompleted, 'click');
+    setEventListener(dragIcon, draggable, 'click');
+    setEventListener(li, showDraggable, 'click');
 
     form.addEventListener('submit', myTodo.addTodo);
     toggleClearCompleted(myTodo);

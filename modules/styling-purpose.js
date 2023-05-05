@@ -44,3 +44,9 @@ export function toggleCheckedList(li, flag) {
   edit.classList.toggle('setVisibilityHidden', flag);
   trash.classList.toggle('checked', false);
 }
+
+export function showDraggable(e) {
+  const li = e.target;
+  li.classList.
+}
+
