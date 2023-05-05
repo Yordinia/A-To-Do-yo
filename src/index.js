@@ -1,121 +1,36 @@
 /* eslint-disable no-use-before-define */
 
 import './style.css';
-import { toggleClearCompleted, toggleCheckedList } from './styling-purpose.js';
+import { toggleCheckedList } from './styling-purpose.js';
 
 import {
-  setEventListener, toLocal, falseInput, listEmpty, refreshPage, updateId,
+  toLocal, listEmpty,
 } from './code-reuse.js';
 
-const input = document.querySelector('#new-item');
-const form = document.querySelector('form');
 const listView = document.querySelector('#todo-list');
 
 class MyTodo {
   constructor() {
-    this.list = JSON.parse(localStorage.getItem('list')) || [];
+    this.list = JSON.parse(localStorage.getItem('list')) || [{
+      id: 0,
+      description: 'Add, Delete and Edit Notes',
+      completed: false,
+    },
+    {
+      id: 1,
+      description: 'Check and Clrear selected',
+      completed: false,
+    },
+
+    ];
     this.checked = this.list.filter(({ completed }) => completed).length;
-  }
-
-  addTodo(e) {
-    e.preventDefault();
-    console.log(this);
-    const inputNote = input.value.trim();
-    if (inputNote.length === 0) {
-      falseInput(myTodo);
-      return;
-    }
-    const obj = new List(inputNote);
-    myTodo.list.push(obj);
-    form.reset();
-    myTodo.render();
-  }
-
-  removeTodo(li) {
-    const z = (this.checked === undefined) ? this.closest('li') : li;
-    const { index } = z.dataset;
-    myTodo.list.splice(index, 1);
-    updateId(myTodo.list);
-    if (z.classList.contains('checked')) {
-      myTodo.checked -= 1;
-    }
-    toggleClearCompleted(myTodo);
-    myTodo.render();
-  }
-
-  editDescription() {
-    // activate edit
-    const li = this.closest('li');
-    const { index } = li.dataset;
-    const pastDescription = li.firstElementChild.children[1];
-    const inputElem = li.firstElementChild.lastElementChild;
-
-    inputElem.value = pastDescription.innerText;
-
-    pastDescription.classList.add('dispaly-none');
-    inputElem.classList.remove('dispaly-none');
-    inputElem.focus();
-
-    const updateDescription = () => {
-      const newNote = inputElem.value.trim();
-      if (newNote === '') {
-        myTodo.removeTodo(li);
-      } else {
-        myTodo.list[index].description = newNote;
-        pastDescription.innerText = newNote;
-        toLocal(myTodo);
-        pastDescription.classList.remove('dispaly-none');
-        inputElem.classList.add('dispaly-none');
-        inputElem.style.border = 'none';
-      }
-    };
-
-    inputElem.addEventListener('keyup', (e) => {
-      if (e.key === 'Enter') inputElem.blur();
-    });
-
-    inputElem.addEventListener('blur', updateDescription);
-  }
-
-  clearCompleted() {
-    const completedLength = myTodo.list.filter(({ completed }) => completed).length;
-    myTodo.list = myTodo.list.filter(({ completed }) => !completed);
-    myTodo.checked -= completedLength;
-    updateId(myTodo.list);
-    //toggleClearCompleted(myTodo);
-    console.log('this is clear completed - list',myTodo.list,'just cleared ', completedLength,' notes!');
-    myTodo.render();
-  }
-
-  checkBox() {
-    const li = this.parentElement.parentElement;
-    toggleCheckedList(li, this.checked);
-
-    if (this.checked) {
-      myTodo.list[this.dataset.index].completed = true;
-      myTodo.checked += 1;
-
-      if (myTodo.checked === 1) {
-      // Activate Clear Completed
-        toggleClearCompleted(myTodo);
-      }
-    } else {
-      myTodo.list[this.dataset.index].completed = false;
-      myTodo.checked -= 1;
-
-      if (myTodo.checked === 0) {
-      // Deactivate clear completed
-        toggleClearCompleted(myTodo);
-      }
-    }
-
-    toLocal(myTodo);
   }
 
   render() {
     toLocal(myTodo);
     listView.innerHTML = '';
 
+    console.log(`Congrats${this}`); // linters told me I need to use this
     // If there's no value in the list
     if (myTodo.list.length === 0) {
       listEmpty();
@@ -143,36 +58,9 @@ class MyTodo {
       listView.appendChild(li);
       toggleCheckedList(li, noteObj.completed);
     });
-
-    const checkbox = document.querySelectorAll('input[type=checkbox]');
-    const editList = document.querySelectorAll('i.bi.bi-pencil');
-    const trashList = document.querySelectorAll('i.bi.bi-trash2');
-    const enter = document.querySelectorAll('i.bi.bi-arrow-90deg-left');
-    const refresh = document.querySelectorAll('i.bi.bi-arrow-clockwise');
-    const clear = document.querySelectorAll('#archive');
-
-    // set event listener on elements after creating them
-
-    setEventListener(checkbox, myTodo.checkBox, 'change');
-    setEventListener(trashList, myTodo.removeTodo, 'click');
-    setEventListener(editList, myTodo.editDescription, 'click');
-    setEventListener(enter, myTodo.addTodo, 'click');
-    setEventListener(refresh, refreshPage, 'click');
-    setEventListener(clear, myTodo.clearCompleted, 'click');
-
-    form.addEventListener('submit', myTodo.addTodo);
-    toggleClearCompleted(myTodo);
-    console.log('Render finished', this);
   }
 }
 
-const List = function(description) {
-  this.id = myTodo.list.length;
-  this.description = description;
-  this.completed = false;
-}
-
 const myTodo = new MyTodo();
-  
 
-window.addEventListener('DOMContentLoaded', () => myTodo.render())
+window.addEventListener('DOMContentLoaded', () => myTodo.render());
