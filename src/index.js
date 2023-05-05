@@ -1,11 +1,11 @@
 /* eslint-disable no-use-before-define */
 
 import './style.css';
-import { toggleCheckedList } from './styling-purpose.js';
+import { toggleCheckedList } from '../modules/styling-purpose.js';
 
 import {
   toLocal, listEmpty,
-} from './code-reuse.js';
+} from '../modules/code-reuse.js';
 
 const listView = document.querySelector('#todo-list');
 

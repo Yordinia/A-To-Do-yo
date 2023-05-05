@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List YO</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <link
+      rel="stylesheet"
+      href="https://bootswatch.com/5/sketchy/bootstrap.min.css"
+    />
+  <script defer src="index.bundle.js"></script></head>
+  <body>
+    <h1 class='no-pointer'>To Do List App</h1>
+    <div class="container">
+      <div class="to-do-title">
+        <p class="grey-text no-pointer">Today's To Do List</p>
+        <i class="bi bi-arrow-clockwise btn btn-light navbar navbar-brand ">
+          <p class="help">Refresh</p>
+        </i>
+      </div>
+      <form>
+        <div class="false-input-container">
+        <span id="false-input" class="help setVisibilityHidden"> Can't submit empty notes</span> 
+        <input type="text" id="new-item" placeholder="Your notes go here..."/> 
+        </div>
+        <i class="bi bi-arrow-90deg-left btn btn-light navbar navbar-brand">
+          <span class="help">ENTER</span>
+        </i>
+      </form>
+      <ul id="todo-list"></ul>
+      <p id="archive" class=' btn btn-outline-secondary navbar navbar-brand'>Clear all completed</p>
+    </div>
+    <footer>
+      <p>&copy; 2023 To Do List App</p>
+    </footer>
+  </body>
+</html>
