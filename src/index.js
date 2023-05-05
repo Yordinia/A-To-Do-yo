@@ -12,12 +12,12 @@ const listView = document.querySelector('#todo-list');
 class MyTodo {
   constructor() {
     this.list = JSON.parse(localStorage.getItem('list')) || [{
-      id: 0,
+      id: 1,
       description: 'Add, Delete and Edit Notes',
       completed: false,
     },
     {
-      id: 1,
+      id: 2,
       description: 'Check and Clrear selected',
       completed: false,
     },
