@@ -19,7 +19,6 @@ class MyTodo {
 
   addTodo(e) {
     e.preventDefault();
-    console.log(this);
     const inputNote = input.value.trim();
     if (inputNote.length === 0) {
       falseInput(myTodo);
@@ -29,6 +28,7 @@ class MyTodo {
     myTodo.list.push(obj);
     form.reset();
     myTodo.render();
+    console.log(this);
   }
 
   removeTodo(li) {
@@ -132,7 +132,7 @@ class MyTodo {
 }
 
 const List = function (description) {
-  this.id = myTodo.list.length;
+  this.id = myTodo.list.length + 1;
   this.description = description;
   this.completed = false;
 };
