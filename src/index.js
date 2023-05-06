@@ -21,7 +21,6 @@ class MyTodo {
       description: 'Check and Clrear selected',
       completed: false,
     },
-
     ];
     this.checked = this.list.filter(({ completed }) => completed).length;
   }
