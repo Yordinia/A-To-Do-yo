@@ -1,19 +1,28 @@
 /* eslint-disable no-use-before-define */
 
 import './style.css';
-import { toggleClearCompleted, toggleCheckedList } from './styling-purpose.js';
+import { toggleCheckedList } from './styling-purpose.js';
 
 import {
-  setEventListener, toLocal, falseInput, listEmpty, refreshPage, updateId,
+  toLocal, listEmpty,
 } from './code-reuse.js';
 
-const input = document.querySelector('#new-item');
-const form = document.querySelector('form');
 const listView = document.querySelector('#todo-list');
 
 class MyTodo {
   constructor() {
-    this.list = JSON.parse(localStorage.getItem('list')) || [];
+    this.list = JSON.parse(localStorage.getItem('list')) || [{
+      id: 0,
+      description: 'Add, Delete and Edit Notes',
+      completed: false,
+    },
+    {
+      id: 1,
+      description: 'Check and Clear selected',
+      completed: false,
+    },
+
+    ];
     this.checked = this.list.filter(({ completed }) => completed).length;
   }
 
@@ -81,6 +90,7 @@ class MyTodo {
     toLocal(myTodo);
     listView.innerHTML = '';
 
+    console.log(`Congrats${this}`); // linters told me I need to use this
     // If there's no value in the list
     if (myTodo.list.length === 0) {
       listEmpty();
@@ -108,26 +118,6 @@ class MyTodo {
       listView.appendChild(li);
       toggleCheckedList(li, noteObj.completed);
     });
-
-    const checkbox = document.querySelectorAll('input[type=checkbox]');
-    const editList = document.querySelectorAll('i.bi.bi-pencil');
-    const trashList = document.querySelectorAll('i.bi.bi-trash2');
-    const enter = document.querySelectorAll('i.bi.bi-arrow-90deg-left');
-    const refresh = document.querySelectorAll('i.bi.bi-arrow-clockwise');
-    const clear = document.querySelectorAll('#archive');
-
-    // set event listener on elements after creating them
-
-    setEventListener(checkbox, myTodo.checkBox, 'change');
-    setEventListener(trashList, myTodo.removeTodo, 'click');
-    setEventListener(editList, myTodo.editDescription, 'click');
-    setEventListener(enter, myTodo.addTodo, 'click');
-    setEventListener(refresh, refreshPage, 'click');
-    setEventListener(clear, myTodo.clearCompleted, 'click');
-
-    form.addEventListener('submit', myTodo.addTodo);
-    toggleClearCompleted(myTodo);
-    console.log('Render finished', this);
   }
 }
 
