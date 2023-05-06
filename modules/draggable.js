@@ -1,53 +1,12 @@
-// let dragged;
-// let id;
-// let index;
+/* eslint-disable */
 
-import { updateId } from './code-reuse';
-import { showDraggable } from './styling-purpose';
+import { updateId } from './code-reuse.js';
+import { showDraggable } from './styling-purpose.js';
 
 let beingDraggedId;
 let droppedOver;
 let droppedOverId;
 
-function toggleDrag(local) {
-  let isDragOn;
-  if (local) {
-    isDragOn = false;
-    myTodo.draggable = false;
-  } else {
-    isDragOn = true;
-    myTodo.draggable = true;
-  }
-  localStorage.setItem('draggable', myTodo.draggable);
-
-  return isDragOn;
-}
-
-export function draggableTrue(e) {
-  const local = JSON.parse(localStorage.getItem('draggable'));
-  const lis = document.querySelectorAll('li');
-  const isDragOn = toggleDrag(local);
-  showDraggable(isDragOn);
-
-  if (isDragOn) {
-    lis.forEach((li) => {
-      li.setAttribute('draggable', true);
-      li.style.cursor = 'move';
-      li.classList.add = 'on-hover';
-    });
-    document.ondragstart = dragStart;
-    document.ondragover = (event) => {
-      event.preventDefault();
-    };
-    document.ondrop = dragEnd;
-  } else {
-    const lis = document.querySelectorAll('li');
-    lis.forEach((li) => {
-      li.setAttribute('draggable', false);
-      li.style.cursor = 'pointer';
-    });
-  }
-}
 
 function dragStart({ target: li }) {
   beingDragged = li;
@@ -71,5 +30,44 @@ function finilizeDrag() {
     return obj;
   });
   updateId(list);
-  myTodo.render();
+}
+
+function toggleDrag(local) {
+  let isDragOn;
+  if (local) {
+    isDragOn = false;
+    local = false;
+  } else {
+    isDragOn = true;
+    local = true;
+  }
+  localStorage.setItem('draggable', local);
+
+  return isDragOn;
+}
+
+export function draggableTrue() {
+  const local = JSON.parse(localStorage.getItem('draggable'))
+  const lis = document.querySelectorAll('li');
+  const isDragOn = toggleDrag(local);
+  showDraggable(isDragOn);
+
+  if (isDragOn) {
+    lis.forEach((li) => {
+      li.setAttribute('draggable', true);
+      li.style.cursor = 'move';
+      li.classList.add = 'on-hover';
+    });
+    document.ondragstart = dragStart;
+    document.ondragover = (event) => {
+      event.preventDefault();
+    };
+    document.ondrop = dragEnd;
+  } else {
+    const lis = document.querySelectorAll('li');
+    lis.forEach((li) => {
+      li.setAttribute('draggable', false);
+      li.style.cursor = 'pointer';
+    });
+  }
 }
