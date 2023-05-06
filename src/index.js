@@ -147,6 +147,7 @@ const List = function (description) {
 const myTodo = new MyTodo();
 
 window.addEventListener('DOMContentLoaded', () => {
-  myTodo.render();
   localStorage.setItem('draggable', myTodo.draggable);
+  localStorage.setItem('list', JSON.stringify(myTodo.list));
+  myTodo.render();
 });
