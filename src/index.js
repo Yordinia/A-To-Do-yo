@@ -1,18 +1,18 @@
 /* eslint-disable no-use-before-define */
 
 import './style.css';
-import { toggleCheckedList } from './styling-purpose.js';
+import { toggleCheckedList } from '../modules/styling-purpose.js';
 
 import {
   toLocal, listEmpty,
-} from './code-reuse.js';
+} from '../modules/code-reuse.js';
 
 const listView = document.querySelector('#todo-list');
 
 class MyTodo {
   constructor() {
     this.list = JSON.parse(localStorage.getItem('list')) || [{
-      id: 0,
+      id: 1,
       description: 'Add, Delete and Edit Notes',
       completed: false,
     },
@@ -21,7 +21,6 @@ class MyTodo {
       description: 'Check and Clear selected',
       completed: false,
     },
-
     ];
     this.checked = this.list.filter(({ completed }) => completed).length;
   }
