@@ -22,6 +22,7 @@
     - [Key Features](#key-features)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
+- [Deployment] (#deployment)
 - [👥 Authors](#authors)
 - [Future Features](#future-features)
 - [🤝 Contributing](#contributing)
@@ -65,9 +66,10 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **Add Books to a book list**
-- **Delete Books from the book list**
-- **Save data to local storage**
+- **Add Notes to a note's list**
+- **Delete notes from the notes list**
+- **Edit, check and clear completed notes**
+- **Activate and order notes bydragging**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -91,6 +93,11 @@ Clone this repository to your desired folder:
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+# Deployment <a name="deployment"></a>
+
+### [Live Click](https://yordinia.github.io/A-To-Do-yo/)
 
 <!-- AUTHORS -->
 
