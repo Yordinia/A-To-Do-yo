@@ -1,12 +1,5 @@
 /* eslint-disable no-use-before-define */
 
-import './style.css';
-import { toggleCheckedList } from '../modules/styling-purpose.js';
-
-import {
-  toLocal, listEmpty,
-} from '../modules/code-reuse.js';
-
 const listView = document.querySelector('#todo-list');
 
 class MyTodo {
