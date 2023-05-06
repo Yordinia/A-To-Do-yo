@@ -49,12 +49,10 @@ ul {
   list-style: none;
   padding: 1rem 0;
   padding-left: 0.95rem;
-  margin: 0;
   border-radius: 1.5rem;
 }
 
 li {
-  width: 99%;
   background-color: white;
 }
 
@@ -137,7 +135,8 @@ form {
   flex: 1;
   gap: 1.5rem;
   text-align: left;
-  min-width: 82%;
+
+  /* min-width: 82%; */
 }
 
 .form-check-label {
@@ -151,17 +150,14 @@ form {
   display: flex;
 }
 
-.dispaly-none {
-  display: none;
-}
-
 .help {
+  width: max-content;
   visibility: hidden;
   background-color: rgb(255, 243, 226);
   color: #11020e;
   text-align: center;
   border-radius: 6px;
-  display: block;
+  display: inline-block;
 
   /* Position the tooltip */
   position: absolute;
@@ -172,6 +168,34 @@ form {
 
 i:hover .help {
   visibility: visible;
+}
+
+.reorder {
+  width: 100%;
+  height: min-content;
+  font-family: "Cabin Sketch", cursive;
+  font-weight: 400;
+  margin: -1.3rem 0;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  padding-inline-start: 1rem;
+}
+
+.reorder p {
+  flex: 1;
+  padding-top: 0.7rem;
+  border: 2px grey solid;
+  border-top: none;
+  border-radius: 1.5rem;
+}
+
+.reorder i {
+  margin-bottom: 1.2rem;
+}
+
+.dispaly-none {
+  display: none;
 }
 
 .setVisibilityHidden {
