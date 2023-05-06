@@ -3,6 +3,7 @@
 import { updateId } from './code-reuse.js';
 import { showDraggable } from './styling-purpose.js';
 
+let beingDragged;
 let beingDraggedId;
 let droppedOver;
 let droppedOverId;
