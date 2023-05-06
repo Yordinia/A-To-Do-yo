@@ -1,13 +1,13 @@
 /* eslint-disable no-use-before-define */
 
 import './style.css';
-import { toggleClearCompleted, toggleCheckedList, showDraggable} from '../modules/styling-purpose.js';
+import { toggleClearCompleted, toggleCheckedList} from '../modules/styling-purpose.js';
 
 import {
-  setEventListener, toLocal, falseInput, listEmpty, refreshPage, updateId,
+  createLi, toLocal, falseInput, listEmpty, updateId, fromLocal
 } from '../modules/code-reuse.js';
 
-import draggable from '../modules/draggable.js';
+import startSettingEventListeners from '../modules/setup-event-listeners';
 
 
 const input = document.querySelector('#new-item');
@@ -18,6 +18,7 @@ class MyTodo {
   constructor() {
     this.list = JSON.parse(localStorage.getItem('list')) || [];
     this.checked = this.list.filter(({ completed }) => completed).length;
+    this.draggable = JSON.parse(localStorage.getItem('draggable')) || false;
   }
 
   addTodo(e) {
@@ -31,6 +32,7 @@ class MyTodo {
     const obj = new List(inputNote);
     myTodo.list.push(obj);
     form.reset();
+    toLocal(myTodo.list)
     myTodo.render();
   }
 
@@ -66,11 +68,11 @@ class MyTodo {
       } else {
         myTodo.list[index].description = newNote;
         pastDescription.innerText = newNote;
-        toLocal(myTodo);
         pastDescription.classList.remove('dispaly-none');
         inputElem.classList.add('dispaly-none');
         inputElem.style.border = 'none';
       }
+      toLocal(myTodo.list)
     };
 
     inputElem.addEventListener('keyup', (e) => {
@@ -112,11 +114,11 @@ class MyTodo {
       }
     }
 
-    toLocal(myTodo);
+    toLocal(myTodo.list);
   }
 
   render() {
-    toLocal(myTodo);
+    myTodo.list = fromLocal();
     listView.innerHTML = '';
 
     // If there's no value in the list
@@ -125,50 +127,13 @@ class MyTodo {
     }
     // Render new todo list based on updated tasks array
     myTodo.list.forEach((noteObj, index) => {
-      const li = document.createElement('li');
-      li.classList.add('navbar', 'navbar-brand');
-      li.setAttribute('data-index', index);
-      li.innerHTML = `
-    <div class="form-check">
-    <input class="form-check-input" type="checkbox" id="${index}" ${
-  noteObj.completed ? 'checked' : ''
-} data-index=${index}>
-    <label class="form-check-label" for="${index}">
-     ${noteObj.description}
-    </label>
-    <input class='form-check-label on-hover dispaly-none' id='edit-input'>
-    </div>
-    <div class='icons'>
-      <i class="bi bi-pencil"><span class="help">edit</span></i>
-      <i class="bi bi-trash2"><span class="help">delete</span></i>
-      <i class="bi bi-three-dots-vertical setVisibilityHidden"></i>
-    </div>
-    `;
+      const li = createLi(noteObj, index, myTodo.draggable);
       listView.appendChild(li);
-      toggleCheckedList(li, noteObj.completed);
+      toggleCheckedList(li, noteObj.completed, myTodo.draggable);
     });
 
-    const checkbox = document.querySelectorAll('input[type=checkbox]');
-    const editList = document.querySelectorAll('i.bi.bi-pencil');
-    const trashList = document.querySelectorAll('i.bi.bi-trash2');
-    const enter = document.querySelectorAll('i.bi.bi-arrow-90deg-left');
-    const refresh = document.querySelectorAll('i.bi.bi-arrow-clockwise');
-    const clear = document.querySelectorAll('#archive');
-    const dragIcon =  document.querySelectorAll('.bi-three-dots-vertical')
-    const li =  document.querySelectorAll('li')
-
     // set event listener on elements after creating them
-
-    setEventListener(checkbox, myTodo.checkBox, 'change');
-    setEventListener(trashList, myTodo.removeTodo, 'click');
-    setEventListener(editList, myTodo.editDescription, 'click');
-    setEventListener(enter, myTodo.addTodo, 'click');
-    setEventListener(refresh, refreshPage, 'click');
-    setEventListener(clear, myTodo.clearCompleted, 'click');
-    setEventListener(dragIcon, draggable, 'click');
-    setEventListener(li, showDraggable, 'click');
-
-    form.addEventListener('submit', myTodo.addTodo);
+    startSettingEventListeners(myTodo);
     toggleClearCompleted(myTodo);
     console.log('Render finished', this);
   }
@@ -181,6 +146,9 @@ const List = function(description) {
 }
 
 const myTodo = new MyTodo();
+export default myTodo;
   
 
-window.addEventListener('DOMContentLoaded', () => myTodo.render())
+window.addEventListener('DOMContentLoaded', () => {myTodo.render();
+  localStorage.setItem('draggable', myTodo.draggable)
+})

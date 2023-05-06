@@ -15,7 +15,6 @@ function classOff(e) {
   if (e.type === 'mouseout') {
     let flag = false;
     if (hover === false || e.target.value !== '') flag = true;
-    // if(e.target.value === '' && document.hasFocus(e.target)=== true) flag = true;
     if (flag) return;
   }
   input.classList.toggle('on-hover', false);
@@ -36,17 +35,31 @@ export function toggleClearCompleted(theList) {
   if (complete) { clear.classList.toggle('disabled', false); } else { clear.classList.toggle('disabled', true); }
 }
 
-export function toggleCheckedList(li, flag) {
-  const trash = li.lastElementChild.lastElementChild;
+export function toggleCheckedList(li, flag, isDragOn) {
   const edit = li.lastElementChild.firstElementChild;
+  const drag = li.lastElementChild.lastElementChild;
 
   li.classList.toggle('checked', flag);
   edit.classList.toggle('setVisibilityHidden', flag);
-  trash.classList.toggle('checked', false);
+  if(isDragOn){
+    drag.style.display = 'inline-block';
+  }
+  else{
+    drag.style.display = 'none';
+  }
 }
 
-export function showDraggable(e) {
-  const li = e.target;
-  li.classList.
+export function showDraggable(bool) {
+  const dragIcon =  document.querySelectorAll('.bi-three-dots-vertical');
+ 
+  dragIcon.forEach(drag=> {
+    if(bool){
+      drag.style.display = 'inline-block';
+    }
+    else{
+      drag.style.display = 'none';
+    }
+  })
+
 }
 
