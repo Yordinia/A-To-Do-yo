@@ -1,14 +1,13 @@
 /* eslint-disable no-use-before-define */
 
 import './style.css';
-import { toggleClearCompleted, toggleCheckedList} from '../modules/styling-purpose.js';
+import { toggleClearCompleted, toggleCheckedList } from '../modules/styling-purpose.js';
 
 import {
-  createLi, toLocal, falseInput, listEmpty, updateId, fromLocal
+  createLi, toLocal, falseInput, listEmpty, updateId, fromLocal,
 } from '../modules/code-reuse.js';
 
-import startSettingEventListeners from '../modules/setup-event-listeners';
-
+import startSettingEventListeners from '../modules/setup-event-listeners.js';
 
 const input = document.querySelector('#new-item');
 const form = document.querySelector('form');
@@ -32,7 +31,7 @@ class MyTodo {
     const obj = new List(inputNote);
     myTodo.list.push(obj);
     form.reset();
-    toLocal(myTodo.list)
+    toLocal(myTodo.list);
     myTodo.render();
   }
 
@@ -72,7 +71,7 @@ class MyTodo {
         inputElem.classList.add('dispaly-none');
         inputElem.style.border = 'none';
       }
-      toLocal(myTodo.list)
+      toLocal(myTodo.list);
     };
 
     inputElem.addEventListener('keyup', (e) => {
@@ -87,8 +86,8 @@ class MyTodo {
     myTodo.list = myTodo.list.filter(({ completed }) => !completed);
     myTodo.checked -= completedLength;
     updateId(myTodo.list);
-    //toggleClearCompleted(myTodo);
-    console.log('this is clear completed - list',myTodo.list,'just cleared ', completedLength,' notes!');
+    // toggleClearCompleted(myTodo);
+    console.log(this);
     myTodo.render();
   }
 
@@ -139,16 +138,15 @@ class MyTodo {
   }
 }
 
-const List = function(description) {
+const List = function (description) {
   this.id = myTodo.list.length;
   this.description = description;
   this.completed = false;
-}
+};
 
 const myTodo = new MyTodo();
-export default myTodo;
-  
 
-window.addEventListener('DOMContentLoaded', () => {myTodo.render();
-  localStorage.setItem('draggable', myTodo.draggable)
-})
+window.addEventListener('DOMContentLoaded', () => {
+  myTodo.render();
+  localStorage.setItem('draggable', myTodo.draggable);
+});

@@ -41,25 +41,23 @@ export function toggleCheckedList(li, flag, isDragOn) {
 
   li.classList.toggle('checked', flag);
   edit.classList.toggle('setVisibilityHidden', flag);
-  if(isDragOn){
+  if (isDragOn) {
     drag.style.display = 'inline-block';
-  }
-  else{
+    li.style.cursor = 'move';
+  } else {
     drag.style.display = 'none';
+    li.style.cursor = 'pointer';
   }
 }
 
 export function showDraggable(bool) {
-  const dragIcon =  document.querySelectorAll('.bi-three-dots-vertical');
- 
-  dragIcon.forEach(drag=> {
-    if(bool){
+  const dragIcon = document.querySelectorAll('.bi-three-dots-vertical');
+
+  dragIcon.forEach((drag) => {
+    if (bool) {
       drag.style.display = 'inline-block';
-    }
-    else{
+    } else {
       drag.style.display = 'none';
     }
-  })
-
+  });
 }
-

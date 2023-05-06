@@ -1,19 +1,16 @@
 const form = document.querySelector('form');
 const listView = document.querySelector('#todo-list');
 
-export function createLi(noteObj, index, isDragOn){
+export function createLi(noteObj, index, isDragOn) {
   const li = document.createElement('li');
   li.classList.add('navbar', 'navbar-brand');
   li.setAttribute('data-index', index);
-  if(isDragOn)
-  li.setAttribute('draggable', true)
-  else
-  li.setAttribute('draggable', false)
+  if (isDragOn) { li.setAttribute('draggable', true); } else { li.setAttribute('draggable', false); }
 
   li.innerHTML = `
 <div class="form-check">
 <input class="form-check-input" type="checkbox" id="${index}" ${
-noteObj.completed ? 'checked' : ''
+  noteObj.completed ? 'checked' : ''
 } data-index=${index}>
 <label class="form-check-label" for="${index}">
  ${noteObj.description}
@@ -26,7 +23,7 @@ noteObj.completed ? 'checked' : ''
   <i class="bi bi-three-dots-vertical"></i>
 </div>
 `;
- return li;
+  return li;
 }
 
 export function toLocal(list) {
