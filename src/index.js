@@ -123,6 +123,7 @@ class MyTodo {
     // If there's no value in the list
     if (myTodo.list.length === 0) {
       listEmpty();
+      return;
     }
     // Render new todo list based on updated tasks array
     myTodo.list.forEach((noteObj, index) => {
