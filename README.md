@@ -33,11 +33,11 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Awesome Books <a name="about-project"></a>
+# 📖 To-Do List App <a name="about-project"></a>
 
 <p align="center">
-<b> Awesome Books </b>  is a website that allow users to create a book with title and author name and add to their books list on the page.
-<br>Used as much modules as possible!
+<b> To-Do List </b>  is a website that allow users to create a note or a task and add to it to their list on the page.
+<br>I have used as much modules as possible!
 </p>
 
 ## 🛠 Built With <a name="built-with"></a>
